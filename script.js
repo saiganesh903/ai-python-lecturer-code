@@ -1,9 +1,31 @@
+// ---------------------------
+// AI Chat + Launch Button Script
+// ---------------------------
+
+// ✅ Replace with your Hugging Face app link:
+const HUGGINGFACE_URL = "https://saiganesh903-ai-python-lecturer.hf.space";
+
+// Launch AI Lecturer button
+const launchBtn = document.getElementById("launchBtn");
+
+if (launchBtn) {
+  launchBtn.addEventListener("click", () => {
+    // Open the Hugging Face space in a new tab
+    window.open(HUGGINGFACE_URL, "_blank");
+  });
+}
+
+// ---------------------------
+// Chat box logic (optional mini demo)
+// ---------------------------
+
 const chatInput = document.createElement("textarea");
 chatInput.placeholder = "Ask Prof. Reddy something...";
+chatInput.style.marginTop = "20px";
 document.body.appendChild(chatInput);
 
 const sendBtn = document.createElement("button");
-sendBtn.innerText = "Ask 🚀";
+sendBtn.innerText = "Ask 🧠";
 document.body.appendChild(sendBtn);
 
 const chatOutput = document.createElement("div");
@@ -12,8 +34,7 @@ document.body.appendChild(chatOutput);
 
 sendBtn.addEventListener("click", async () => {
   const userMessage = chatInput.value.trim();
-  if (!userMessage) return alert("Please type a message!");
-
+  if (!userMessage) return alert("Please type a question for Prof. Reddy!");
   chatOutput.innerHTML += `<p><b>You:</b> ${userMessage}</p>`;
   chatInput.value = "";
 
@@ -31,6 +52,6 @@ sendBtn.addEventListener("click", async () => {
       chatOutput.innerHTML += `<p><i>Error: ${data.error}</i></p>`;
     }
   } catch (err) {
-    chatOutput.innerHTML += `<p><i>Connection error: ${err.message}</i></p>`;
+    chatOutput.innerHTML += `<p><i>Connection issue: ${err.message}</i></p>`;
   }
 });
